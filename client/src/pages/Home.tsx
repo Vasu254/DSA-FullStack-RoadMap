@@ -10,6 +10,7 @@ import SectionIllustration from "@/components/SectionIllustration";
 import ProgressStats from "@/components/ProgressStats";
 import ProgressTracker from "@/components/ProgressTracker";
 import LearningPathBadge from "@/components/LearningPathBadge";
+import ThemeToggle from "@/components/ThemeToggle";
 import { getSemestersForYear, getYearDescription } from "@/lib/roadmapData";
 import { calculateOverallProgress, getMilestonesAchieved, ProgressData } from "@/lib/progressCalculations";
 import { TrendingUp, Target, Award, Code2, BookOpen, ArrowLeft, Calendar } from "lucide-react";
@@ -173,6 +174,7 @@ export default function Home() {
                 </Badge>
               </>
             )}
+            <ThemeToggle />
           </div>
         </div>
       </header>
