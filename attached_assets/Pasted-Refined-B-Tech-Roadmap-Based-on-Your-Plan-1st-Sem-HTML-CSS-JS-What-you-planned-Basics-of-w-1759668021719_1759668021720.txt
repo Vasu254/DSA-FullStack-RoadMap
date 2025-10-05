@@ -1,0 +1,122 @@
+Refined B.Tech Roadmap (Based on Your Plan)
+1st Sem (HTML, CSS, JS)
+
+✅ What you planned: Basics of web.
+👉 What to actually do:
+
+Learn HTML, CSS, JS thoroughly.
+
+Build 2–3 mini websites (Portfolio, Landing Page, To-Do app).
+
+Parallel → Start C++/Java/Python basics (for DSA foundation).
+
+📌 Output: GitHub portfolio with simple static websites + coding basics.
+
+2nd Sem (DSA Start + Problem Solving)
+
+✅ What you planned: Start DSA.
+👉 Refined Plan:
+
+Start DSA in C++/Java → arrays, strings, recursion, OOP basics.
+
+Practice daily on LeetCode / GFG (30–50 problems by end of sem).
+
+Do mini-projects in JS (Weather App using API, Notes App).
+
+📌 Output: Coding profile started + 1–2 interactive JS projects.
+
+3rd Sem (Frontend Libraries)
+
+✅ What you planned: Learn frontend libraries.
+👉 Refined Plan:
+
+Learn React.js (most demanded).
+
+Master state management (Redux/Context API).
+
+Connect React with simple APIs (REST/JSON).
+
+Continue DSA (stacks, queues, linked list, trees).
+
+📌 Output: A React project (Blog app, E-commerce frontend).
+
+4th Sem (Backend Development)
+
+✅ What you planned: Backend.
+👉 Refined Plan:
+
+Learn Node.js + Express OR Java Spring Boot (choose 1).
+
+Learn Databases (SQL + MongoDB).
+
+Do full-stack project (Authentication, CRUD apps).
+
+Continue DSA (Graphs, DP).
+
+📌 Output: Full-stack project on GitHub + 200–300 solved problems.
+
+5th Sem (Big Projects + Strong Resume)
+
+✅ What you planned: Projects.
+👉 Refined Plan:
+
+Build 2 major projects (Resume-worthy full-stack or ML project).
+
+Learn System Design basics (APIs, scalability).
+
+Contribute to open source (Hacktoberfest, GSOC).
+
+Internship applications (summer internships, startups, freelancing).
+
+📌 Output: Resume with 3–4 good projects + internship experience.
+
+6th Sem (Internships + Placement Prep)
+
+✅ What you planned: Projects + start job applying.
+👉 Refined Plan:
+
+Continue internship OR work on major project.
+
+Placement prep → Revise OS, DBMS, CN, OOP.
+
+Solve 500+ DSA problems by end of sem.
+
+Mock interviews + resume building.
+
+📌 Output: Strong coding + system knowledge, ready for placements.
+
+7th Sem (Placements Full Swing)
+
+👉 Focus:
+
+Apply for on-campus + off-campus jobs.
+
+Do mock coding tests daily.
+
+Build 1 final capstone project (AI/ML, Full-stack, or IoT).
+
+Strengthen resume + LinkedIn profile.
+
+📌 Output: Placement-ready profile + offers incoming.
+
+8th Sem (Backup & Higher Studies/Start Job)
+
+👉 Focus:
+
+If placed → work on final year project only.
+
+If not placed → keep applying off-campus.
+
+Prepare for GATE, GRE, or certifications if higher studies.
+
+📌 Output: Either job offer OR higher studies plan secured.
+
+📌 Key Extras (Parallel Every Year)
+
+LeetCode consistency (target 500–600 problems).
+
+GitHub portfolio (all projects uploaded).
+
+LinkedIn networking (post projects, internships).
+
+Hackathons/Internships → at least 2 before 6th sem.
