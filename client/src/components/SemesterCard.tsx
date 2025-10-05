@@ -1,7 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle2, Circle, Lock, Code2, Layers, Target, TrendingUp } from "lucide-react";
+import { CheckCircle2, Circle, Lock, Code2, Layers, Target, TrendingUp, Plus, Minus } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
 export interface SemesterData {
@@ -19,9 +20,23 @@ export interface SemesterData {
 interface SemesterCardProps {
   data: SemesterData;
   onToggleTask?: (semester: number, taskIndex: number) => void;
+  onUpdateProgress?: (semester: number, progress: number) => void;
+  currentProgress?: number;
 }
 
-export default function SemesterCard({ data }: SemesterCardProps) {
+export default function SemesterCard({ data, onUpdateProgress, currentProgress = 0 }: SemesterCardProps) {
+  const handleIncreaseProgress = () => {
+    if (onUpdateProgress && currentProgress < 100) {
+      onUpdateProgress(data.semester, Math.min(100, currentProgress + 10));
+    }
+  };
+
+  const handleDecreaseProgress = () => {
+    if (onUpdateProgress && currentProgress > 0) {
+      onUpdateProgress(data.semester, Math.max(0, currentProgress - 10));
+    }
+  };
+
   return (
     <Card 
       className={`overflow-hidden shadow-md transition-all duration-300 ${
@@ -45,12 +60,12 @@ export default function SemesterCard({ data }: SemesterCardProps) {
               <Badge variant="default" className="bg-primary">
                 Semester {data.semester}
               </Badge>
-              {data.completionPercentage > 0 && (
+              {currentProgress > 0 && (
                 <Badge 
                   variant="secondary"
                   className="bg-chart-2 text-white"
                 >
-                  {data.completionPercentage}% Complete
+                  {currentProgress}% Complete
                 </Badge>
               )}
             </div>
@@ -134,13 +149,37 @@ export default function SemesterCard({ data }: SemesterCardProps) {
         </Accordion>
       </div>
 
-      {!data.isLocked && data.completionPercentage >= 0 && (
+      {!data.isLocked && (
         <div className="border-t border-card-border bg-muted/30 p-4">
-          <div className="mb-2 flex items-center justify-between text-sm">
-            <span className="font-medium text-foreground">Progress</span>
-            <span className="text-muted-foreground">{data.completionPercentage}%</span>
+          <div className="mb-3 flex items-center justify-between">
+            <span className="text-sm font-medium text-foreground">Progress</span>
+            <div className="flex items-center gap-2">
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={handleDecreaseProgress}
+                disabled={currentProgress === 0}
+                className="h-7 w-7 p-0"
+                data-testid={`button-decrease-progress-${data.semester}`}
+              >
+                <Minus className="h-3 w-3" />
+              </Button>
+              <span className="min-w-[3rem] text-center text-sm font-semibold text-foreground">
+                {currentProgress}%
+              </span>
+              <Button
+                size="sm"
+                variant="outline"
+                onClick={handleIncreaseProgress}
+                disabled={currentProgress === 100}
+                className="h-7 w-7 p-0"
+                data-testid={`button-increase-progress-${data.semester}`}
+              >
+                <Plus className="h-3 w-3" />
+              </Button>
+            </div>
           </div>
-          <Progress value={data.completionPercentage} className="h-3" />
+          <Progress value={currentProgress} className="h-3" />
         </div>
       )}
     </Card>

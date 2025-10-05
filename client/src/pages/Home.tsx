@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -8,8 +8,10 @@ import SemesterCard from "@/components/SemesterCard";
 import MilestoneTimeline, { Milestone } from "@/components/MilestoneTimeline";
 import SectionIllustration from "@/components/SectionIllustration";
 import ProgressStats from "@/components/ProgressStats";
+import ProgressTracker from "@/components/ProgressTracker";
 import LearningPathBadge from "@/components/LearningPathBadge";
 import { getSemestersForYear, getYearDescription } from "@/lib/roadmapData";
+import { calculateOverallProgress, getMilestonesAchieved, ProgressData } from "@/lib/progressCalculations";
 import { TrendingUp, Target, Award, Code2, BookOpen, ArrowLeft, Calendar } from "lucide-react";
 import dsaImage from "@assets/generated_images/DSA_concepts_illustration_71d552ae.png";
 import fullstackImage from "@assets/generated_images/Full-stack_architecture_illustration_73bd6b31.png";
@@ -17,8 +19,29 @@ import placementImage from "@assets/generated_images/Placement_success_celebrati
 
 export default function Home() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [progressData, setProgressData] = useState<ProgressData>({
+    problemsSolved: 0,
+    projectsBuilt: 0,
+    semesterProgress: {}
+  });
+  
   const yearSelectorRef = useRef<HTMLDivElement>(null);
   const roadmapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem('btechRoadmapProgress');
+    if (stored) {
+      try {
+        setProgressData(JSON.parse(stored));
+      } catch (e) {
+        console.error('Failed to parse stored progress', e);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('btechRoadmapProgress', JSON.stringify(progressData));
+  }, [progressData]);
 
   const handleGetStarted = () => {
     yearSelectorRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -31,32 +54,50 @@ export default function Home() {
     }, 300);
   };
 
+  const handleUpdateProblems = (value: number) => {
+    setProgressData(prev => ({ ...prev, problemsSolved: value }));
+  };
+
+  const handleUpdateProjects = (value: number) => {
+    setProgressData(prev => ({ ...prev, projectsBuilt: value }));
+  };
+
+  const handleUpdateSemesterProgress = (semester: number, progress: number) => {
+    setProgressData(prev => ({
+      ...prev,
+      semesterProgress: { ...prev.semesterProgress, [semester]: progress }
+    }));
+  };
+
   const semesters = selectedYear ? getSemestersForYear(selectedYear) : [];
   const yearInfo = selectedYear ? getYearDescription(selectedYear) : null;
+  
+  const overallProgress = selectedYear ? calculateOverallProgress(progressData, selectedYear) : 0;
+  const milestonesAchieved = getMilestonesAchieved(progressData.problemsSolved, progressData.projectsBuilt);
 
-  const mockStats = [
+  const stats = [
     {
       icon: Code2,
       label: "Problems Solved",
-      value: "0",
+      value: progressData.problemsSolved.toString(),
       color: "bg-chart-4"
     },
     {
       icon: Target,
       label: "Projects Built",
-      value: "0",
+      value: progressData.projectsBuilt.toString(),
       color: "bg-chart-2"
     },
     {
       icon: TrendingUp,
       label: "Overall Progress",
-      value: "0%",
+      value: `${overallProgress}%`,
       color: "bg-chart-1"
     },
     {
       icon: Award,
       label: "Milestones",
-      value: "0/12",
+      value: `${milestonesAchieved}/12`,
       color: "bg-chart-3"
     }
   ];
@@ -177,7 +218,21 @@ export default function Home() {
             </section>
 
             <section className="container mx-auto px-4 py-12">
-              <ProgressStats stats={mockStats} />
+              <div className="mb-8">
+                <h2 className="mb-4 text-center font-heading text-2xl font-semibold text-foreground">
+                  Track Your Progress
+                </h2>
+                <ProgressTracker
+                  problemsSolved={progressData.problemsSolved}
+                  projectsBuilt={progressData.projectsBuilt}
+                  onUpdateProblems={handleUpdateProblems}
+                  onUpdateProjects={handleUpdateProjects}
+                />
+              </div>
+              
+              <div className="mt-8">
+                <ProgressStats stats={stats} />
+              </div>
             </section>
 
             <section className="bg-muted/30 py-16">
@@ -207,7 +262,12 @@ export default function Home() {
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {semesters.map((semester) => (
-                  <SemesterCard key={semester.semester} data={semester} />
+                  <SemesterCard 
+                    key={semester.semester} 
+                    data={semester}
+                    currentProgress={progressData.semesterProgress[semester.semester] || 0}
+                    onUpdateProgress={handleUpdateSemesterProgress}
+                  />
                 ))}
               </div>
             </section>
