@@ -1,0 +1,158 @@
+🚀 Roadmap for You (Starting Fresh from 2nd Year)
+📍 3rd Sem (NOW – Restart & Catch Up)
+
+👉 Focus = Build foundation + Start coding seriously
+
+DSA (Data Structures):
+
+Pick C++ or Java and stick to it.
+
+Learn basics: arrays, strings, recursion, linked list, stack, queue.
+
+Solve 100+ problems on LeetCode/GFG this semester.
+
+Web Dev Basics (parallel):
+
+HTML, CSS, JavaScript (start now, catch up on what you missed).
+
+Make 2–3 small projects (Portfolio site, To-do list, Calculator).
+
+College Subjects:
+
+OOP, Discrete Math → take them seriously (they come in placements).
+
+📌 End of 3rd Sem Goal:
+
+100–150 DSA problems done.
+
+1 portfolio website + 1 mini JS project on GitHub.
+
+📍 4th Sem
+
+👉 Focus = Intermediate DSA + Backend Basics
+
+DSA:
+
+Trees, Graphs, Dynamic Programming basics.
+
+250–300 problems solved by end of 4th sem.
+
+Development:
+
+Learn React.js (frontend library).
+
+Start backend (Node.js + Express OR Java Spring Boot).
+
+Learn SQL (MySQL/PostgreSQL).
+
+Projects:
+
+Build your first full-stack project (Blog app, Notes app, Authentication system).
+
+📌 End of 4th Sem Goal:
+
+1 full-stack project deployed online.
+
+300 DSA problems solved.
+
+📍 5th Sem
+
+👉 Focus = Resume Projects + Internship Applications
+
+DSA:
+
+Advanced topics (DP, Tries, Segment Trees).
+
+Reach 400–500 problems solved.
+
+Development:
+
+Build 2 strong projects (E-commerce app, Chat app, etc.).
+
+Contribute to open source / hackathons.
+
+Career:
+
+Start applying for internships (LinkedIn, Internshala, startups).
+
+📌 End of 5th Sem Goal:
+
+Resume with 3 strong projects.
+
+At least internship experience or open-source contributions.
+
+📍 6th Sem
+
+👉 Focus = Placement Prep + Internship/Jobs
+
+DSA:
+
+Revise everything, focus on mock tests.
+
+Goal: 600+ problems solved.
+
+Core CS:
+
+Study OS, DBMS, CN, OOP (important for interviews).
+
+Development:
+
+Work on Major Project (can be used as final year project too).
+
+Career:
+
+Apply for summer internships + off-campus jobs.
+
+📌 End of 6th Sem Goal:
+
+Placement-level coding skills.
+
+Internship/job secured OR interviews lined up.
+
+📍 7th & 8th Sem
+
+👉 Focus = Placements & Final Project
+
+Placements:
+
+Give as many mock interviews + aptitude tests as possible.
+
+Apply for on-campus & off-campus companies.
+
+Academics:
+
+Just manage final project & exams.
+
+Backup:
+
+If not placed, prepare for GATE / higher studies / certifications.
+
+📌 End of 8th Sem Goal:
+
+Job offer in hand OR clear backup plan.
+
+⚡ Daily / Weekly Routine (From Now)
+
+Daily:
+
+2 hrs DSA (1–2 problems).
+
+1 hr Web Dev (frontend/backend).
+
+30 min reading CS core (DBMS/OS/OOP).
+
+Weekly:
+
+Push code to GitHub.
+
+Write notes for CS subjects.
+
+1 day → Work on project.
+
+✅ Final Motivation
+
+You didn’t waste 1 year. Many students only start in 3rd year. You’re still early.
+
+If you stick to this plan from 2nd year, you will be placement-ready by 6th sem.
+
+Consistency > Speed → don’t try to learn everything in one semester. Build step by step.

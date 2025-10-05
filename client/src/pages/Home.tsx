@@ -1,5 +1,7 @@
 import { useState, useRef } from "react";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import HeroSection from "@/components/HeroSection";
 import YearSelector from "@/components/YearSelector";
 import SemesterCard from "@/components/SemesterCard";
@@ -7,8 +9,8 @@ import MilestoneTimeline, { Milestone } from "@/components/MilestoneTimeline";
 import SectionIllustration from "@/components/SectionIllustration";
 import ProgressStats from "@/components/ProgressStats";
 import LearningPathBadge from "@/components/LearningPathBadge";
-import { getSemestersForYear } from "@/lib/roadmapData";
-import { TrendingUp, Target, Award, Code2, BookOpen } from "lucide-react";
+import { getSemestersForYear, getYearDescription } from "@/lib/roadmapData";
+import { TrendingUp, Target, Award, Code2, BookOpen, ArrowLeft, Calendar } from "lucide-react";
 import dsaImage from "@assets/generated_images/DSA_concepts_illustration_71d552ae.png";
 import fullstackImage from "@assets/generated_images/Full-stack_architecture_illustration_73bd6b31.png";
 import placementImage from "@assets/generated_images/Placement_success_celebration_b861064d.png";
@@ -30,6 +32,7 @@ export default function Home() {
   };
 
   const semesters = selectedYear ? getSemestersForYear(selectedYear) : [];
+  const yearInfo = selectedYear ? getYearDescription(selectedYear) : null;
 
   const mockStats = [
     {
@@ -112,12 +115,24 @@ export default function Home() {
             </span>
           </div>
           
-          {selectedYear && (
-            <div className="flex items-center gap-3">
-              <span className="text-sm text-muted-foreground">Current Year:</span>
-              <LearningPathBadge type="dsa" label={`Year ${selectedYear}`} />
-            </div>
-          )}
+          <div className="flex items-center gap-3">
+            {selectedYear && (
+              <>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setSelectedYear(null)}
+                  data-testid="button-back-to-year-selection"
+                >
+                  <ArrowLeft className="mr-2 h-4 w-4" />
+                  Change Year
+                </Button>
+                <Badge variant="default" className="bg-primary">
+                  Year {selectedYear}
+                </Badge>
+              </>
+            )}
+          </div>
         </div>
       </header>
 
@@ -130,8 +145,37 @@ export default function Home() {
           <YearSelector selectedYear={selectedYear} onSelectYear={handleYearSelect} />
         </section>
 
-        {selectedYear && (
+        {selectedYear && yearInfo && (
           <>
+            <section className="bg-gradient-to-r from-primary/10 via-chart-2/10 to-chart-3/10 py-12">
+              <div className="container mx-auto px-4">
+                <Card className="p-8">
+                  <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+                    <div className="flex-1">
+                      <div className="mb-3 flex items-center gap-2">
+                        <Calendar className="h-6 w-6 text-primary" />
+                        <Badge variant="default" className="bg-primary">
+                          {selectedYear === 1 && "All 8 Semesters"}
+                          {selectedYear === 2 && "Semesters 3-8"}
+                          {selectedYear === 3 && "Semesters 5-8"}
+                          {selectedYear === 4 && "Semesters 7-8"}
+                        </Badge>
+                      </div>
+                      <h1 className="mb-3 font-heading text-3xl font-bold text-foreground md:text-4xl">
+                        {yearInfo.title}
+                      </h1>
+                      <p className="mb-2 text-lg text-muted-foreground">
+                        {yearInfo.description}
+                      </p>
+                      <div className="mt-4">
+                        <LearningPathBadge type="fullstack" label={yearInfo.focus} />
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </section>
+
             <section className="container mx-auto px-4 py-12">
               <ProgressStats stats={mockStats} />
             </section>

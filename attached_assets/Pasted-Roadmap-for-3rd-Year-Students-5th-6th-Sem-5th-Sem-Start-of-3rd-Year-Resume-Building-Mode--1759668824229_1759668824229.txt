@@ -1,0 +1,122 @@
+Roadmap for 3rd Year Students (5th & 6th Sem)
+📍 5th Sem (Start of 3rd Year – Resume Building Mode)
+
+👉 Focus = Strong Projects + Intermediate/Advanced DSA
+
+DSA / Coding:
+
+Revise basics (arrays, strings, linked list, stack, queue, trees).
+
+Learn advanced: Graphs, DP, Heaps, Tries.
+
+Target: 400–500 solved problems by end of this semester.
+
+Core CS:
+
+Learn Operating Systems + DBMS + OOP (must for interviews).
+
+Start Computer Networks basics.
+
+Development:
+
+Build 2 strong projects (Full-stack / ML / App Dev). Examples:
+
+E-commerce site with login/cart.
+
+Chat application with real-time messaging.
+
+AI/ML project (basic image classifier, sentiment analysis).
+
+Career:
+
+Start applying for internships (Dec-Jan window).
+
+Join hackathons & open-source events.
+
+📌 End of 5th Sem Goal:
+
+Resume with 2 strong projects.
+
+400+ DSA problems solved.
+
+Internship applications started.
+
+📍 6th Sem (Mid 3rd Year – Placement Prep Begins)
+
+👉 Focus = Internship/Placement Prep + Major Project Start
+
+DSA / Coding:
+
+Practice 2–3 problems daily on LeetCode.
+
+Do mock coding contests (Codeforces/CodeChef).
+
+Reach 600+ solved problems by end of semester.
+
+Core CS:
+
+Revise OS, DBMS, CN, OOP thoroughly.
+
+Study System Design basics (scalability, APIs, caching).
+
+Development / Projects:
+
+Start your final year major project (choose something big & resume-worthy).
+
+Example:
+
+Online exam portal.
+
+Social media clone.
+
+ML project with deployment.
+
+Career:
+
+Do a summer internship after 6th sem (very important).
+
+Polish resume, GitHub, LinkedIn.
+
+📌 End of 6th Sem Goal:
+
+Internship offer in hand.
+
+600+ DSA problems solved.
+
+Major project started & in progress.
+
+🚨 Daily / Weekly Routine (For 3rd Year Students)
+
+Daily:
+
+2 hrs DSA (LeetCode, GFG, Codeforces).
+
+1 hr Core CS (OS, DBMS, CN).
+
+1 hr Project work (development/ML).
+
+Weekly:
+
+1 mock test / coding contest.
+
+Resume/GitHub update.
+
+Hackathon/club activity (if available).
+
+✅ Why 3rd Year is CRUCIAL
+
+By end of 6th sem, you must be internship-ready.
+
+By 7th sem (placements) → you should already have:
+
+500–600 coding problems solved.
+
+3–4 projects on resume.
+
+At least 1 internship experience.
+
+⚡ In short:
+
+5th Sem → Projects + DSA Advanced + Core Subjects
+
+6th Sem → Internships + Major Project + Placement Prep

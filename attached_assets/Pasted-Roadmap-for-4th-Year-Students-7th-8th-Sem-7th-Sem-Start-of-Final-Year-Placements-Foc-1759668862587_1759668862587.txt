@@ -1,0 +1,116 @@
+Roadmap for 4th Year Students (7th & 8th Sem)
+📍 7th Sem (Start of Final Year – Placements!)
+
+👉 Focus = Placement season + Major Project progress
+
+DSA / Coding:
+
+Focus on revision, not new topics.
+
+Daily 2–3 problems (arrays, strings, DP, trees, graphs).
+
+Do mock interviews & coding contests.
+
+Core CS (very important in interviews):
+
+Revise OOP, OS, DBMS, CN.
+
+Be able to explain concepts + write SQL queries.
+
+Major Project:
+
+Start building your final year capstone project (should be resume-worthy).
+
+Example:
+
+E-learning platform.
+
+Social media app.
+
+AI/ML project with deployment.
+
+Career / Placements:
+
+Apply to on-campus companies (service & product based).
+
+Start off-campus applications (LinkedIn, Naukri, company portals).
+
+Practice aptitude + HR interview questions.
+
+📌 End of 7th Sem Goal:
+
+Resume updated with projects + internship.
+
+At least 1–2 interview experiences done.
+
+Major project in progress.
+
+📍 8th Sem (Last Semester – Final Push)
+
+👉 Focus = Secure career (Job OR Higher Studies)
+
+Placements / Off-campus:
+
+If placed → relax a bit, just maintain academics.
+
+If not placed → keep applying to off-campus jobs daily.
+
+Do mock interviews with friends/seniors.
+
+Major Project:
+
+Complete & polish final year project.
+
+Prepare PPT + demo (sometimes companies ask).
+
+Higher Studies Backup (if not placed):
+
+GATE prep (if aiming for PSU/M.Tech).
+
+GRE/TOEFL/IELTS (if MS abroad).
+
+Certifications (Cloud, ML, Data Science) if planning specialization.
+
+Soft Skills:
+
+Improve communication, teamwork, presentation (important in HR rounds).
+
+📌 End of 8th Sem Goal:
+
+Job offer in hand OR solid plan for higher studies.
+
+Final project submitted & demo-ready.
+
+✅ Daily / Weekly Routine (4th Year)
+
+Daily:
+
+2–3 DSA problems (revision).
+
+1 hr Core CS revision (OS, DBMS, CN, OOP).
+
+1 hr placement prep (mock tests/interviews).
+
+Weekly:
+
+1 mock interview with a friend/senior.
+
+Update resume/LinkedIn with progress.
+
+Work on final year project.
+
+🔑 Final Year Golden Rules
+
+DSA → Revise, not learn new things.
+
+Core CS → Be interview-ready (OS, DBMS, CN, OOP).
+
+Projects → Final year project should be impressive & presentable.
+
+Job → On-campus is priority, off-campus as backup.
+
+Higher Studies → Keep as Plan B if placements fail.
+
+⚡ In short:
+
+7th Sem → Placements + Major Project (start)
