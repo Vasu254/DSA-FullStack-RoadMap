@@ -1,3 +1,4 @@
+// ...existing code...
 import { useState, useRef, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -7,42 +8,43 @@ import YearSelector from "@/components/YearSelector";
 import SemesterCard from "@/components/SemesterCard";
 import MilestoneTimeline, { Milestone } from "@/components/MilestoneTimeline";
 import SectionIllustration from "@/components/SectionIllustration";
-import ProgressStats from "@/components/ProgressStats";
-import ProgressTracker from "@/components/ProgressTracker";
 import LearningPathBadge from "@/components/LearningPathBadge";
 import ThemeToggle from "@/components/ThemeToggle";
 import { getSemestersForYear, getYearDescription } from "@/lib/roadmapData";
-import { calculateOverallProgress, getMilestonesAchieved, ProgressData } from "@/lib/progressCalculations";
-import { TrendingUp, Target, Award, Code2, BookOpen, ArrowLeft, Calendar } from "lucide-react";
+import { BookOpen, ArrowLeft, Calendar } from "lucide-react";
 import dsaImage from "@assets/generated_images/DSA_concepts_illustration_71d552ae.png";
 import fullstackImage from "@assets/generated_images/Full-stack_architecture_illustration_73bd6b31.png";
 import placementImage from "@assets/generated_images/Placement_success_celebration_b861064d.png";
+// ...existing code...
 
 export default function Home() {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
-  const [progressData, setProgressData] = useState<ProgressData>({
-    problemsSolved: 0,
-    projectsBuilt: 0,
-    semesterProgress: {}
-  });
-  
+
+  // Keep only semester progress state (track progress per semester if needed)
+  const [semesterProgress, setSemesterProgress] = useState<
+    Record<number, number>
+  >({});
+
   const yearSelectorRef = useRef<HTMLDivElement>(null);
   const roadmapRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem('btechRoadmapProgress');
+    const stored = localStorage.getItem("btechRoadmapSemesterProgress");
     if (stored) {
       try {
-        setProgressData(JSON.parse(stored));
+        setSemesterProgress(JSON.parse(stored));
       } catch (e) {
-        console.error('Failed to parse stored progress', e);
+        console.error("Failed to parse stored semester progress", e);
       }
     }
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('btechRoadmapProgress', JSON.stringify(progressData));
-  }, [progressData]);
+    localStorage.setItem(
+      "btechRoadmapSemesterProgress",
+      JSON.stringify(semesterProgress)
+    );
+  }, [semesterProgress]);
 
   const handleGetStarted = () => {
     yearSelectorRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -55,95 +57,59 @@ export default function Home() {
     }, 300);
   };
 
-  const handleUpdateProblems = (value: number) => {
-    setProgressData(prev => ({ ...prev, problemsSolved: value }));
-  };
-
-  const handleUpdateProjects = (value: number) => {
-    setProgressData(prev => ({ ...prev, projectsBuilt: value }));
-  };
-
   const handleUpdateSemesterProgress = (semester: number, progress: number) => {
-    setProgressData(prev => ({
-      ...prev,
-      semesterProgress: { ...prev.semesterProgress, [semester]: progress }
-    }));
+    setSemesterProgress((prev) => ({ ...prev, [semester]: progress }));
   };
 
   const semesters = selectedYear ? getSemestersForYear(selectedYear) : [];
   const yearInfo = selectedYear ? getYearDescription(selectedYear) : null;
-  
-  const overallProgress = selectedYear ? calculateOverallProgress(progressData, selectedYear) : 0;
-  const milestonesAchieved = getMilestonesAchieved(progressData.problemsSolved, progressData.projectsBuilt);
-
-  const stats = [
-    {
-      icon: Code2,
-      label: "Problems Solved",
-      value: progressData.problemsSolved.toString(),
-      color: "bg-chart-4"
-    },
-    {
-      icon: Target,
-      label: "Projects Built",
-      value: progressData.projectsBuilt.toString(),
-      color: "bg-chart-2"
-    },
-    {
-      icon: TrendingUp,
-      label: "Overall Progress",
-      value: `${overallProgress}%`,
-      color: "bg-chart-1"
-    },
-    {
-      icon: Award,
-      label: "Milestones",
-      value: `${milestonesAchieved}/12`,
-      color: "bg-chart-3"
-    }
-  ];
 
   const mockMilestones: Milestone[] = [
     {
       id: 1,
       semester: 2,
       title: "DSA Foundation Complete",
-      description: "Complete arrays, strings, recursion, and OOP basics. Solve 50+ problems on LeetCode.",
+      description:
+        "Complete arrays, strings, recursion, and OOP basics. Solve 50+ problems on LeetCode.",
       isCompleted: false,
-      isMajor: false
+      isMajor: false,
     },
     {
       id: 2,
       semester: 4,
       title: "Full-Stack Project Delivered",
-      description: "Build and deploy a complete full-stack application with authentication and CRUD operations.",
+      description:
+        "Build and deploy a complete full-stack application with authentication and CRUD operations.",
       isCompleted: false,
-      isMajor: true
+      isMajor: true,
     },
     {
       id: 3,
       semester: 5,
       title: "Major Projects & Open Source",
-      description: "Build 2 major resume-worthy projects and contribute to open source. Apply for internships.",
+      description:
+        "Build 2 major resume-worthy projects and contribute to open source. Apply for internships.",
       isCompleted: false,
-      isMajor: true
+      isMajor: true,
     },
     {
       id: 4,
       semester: 6,
       title: "Internship Secured",
-      description: "Land summer internship at a tech company. Resume strong with 3-4 solid projects.",
+      description:
+        "Land summer internship at a tech company. Resume strong with 3-4 solid projects.",
       isCompleted: false,
-      isMajor: true
+      isMajor: true,
     },
     {
       id: 5,
       semester: 7,
       title: "Placement Ready",
-      description: "500+ DSA problems solved. Final capstone project complete. Offers incoming!",
+      description:
+        "500+ DSA problems solved. Final capstone project complete. Offers incoming!",
       isCompleted: false,
-      isMajor: true
-    }
+      isMajor: true,
+    },
   ];
 
   return (
@@ -156,7 +122,7 @@ export default function Home() {
               B.Tech Roadmap
             </span>
           </div>
-          
+
           <div className="flex items-center gap-3">
             {selectedYear && (
               <>
@@ -185,7 +151,10 @@ export default function Home() {
         </section>
 
         <section ref={yearSelectorRef} className="container mx-auto px-4 py-16">
-          <YearSelector selectedYear={selectedYear} onSelectYear={handleYearSelect} />
+          <YearSelector
+            selectedYear={selectedYear}
+            onSelectYear={handleYearSelect}
+          />
         </section>
 
         {selectedYear && yearInfo && (
@@ -211,7 +180,10 @@ export default function Home() {
                         {yearInfo.description}
                       </p>
                       <div className="mt-4">
-                        <LearningPathBadge type="fullstack" label={yearInfo.focus} />
+                        <LearningPathBadge
+                          type="fullstack"
+                          label={yearInfo.focus}
+                        />
                       </div>
                     </div>
                   </div>
@@ -219,23 +191,7 @@ export default function Home() {
               </div>
             </section>
 
-            <section className="container mx-auto px-4 py-12">
-              <div className="mb-8">
-                <h2 className="mb-4 text-center font-heading text-2xl font-semibold text-foreground">
-                  Track Your Progress
-                </h2>
-                <ProgressTracker
-                  problemsSolved={progressData.problemsSolved}
-                  projectsBuilt={progressData.projectsBuilt}
-                  onUpdateProblems={handleUpdateProblems}
-                  onUpdateProjects={handleUpdateProjects}
-                />
-              </div>
-              
-              <div className="mt-8">
-                <ProgressStats stats={stats} />
-              </div>
-            </section>
+            {/* Removed "Track Your Progress" UI and related components */}
 
             <section className="bg-muted/30 py-16">
               <div className="container mx-auto px-4">
@@ -258,16 +214,19 @@ export default function Home() {
                 </p>
                 <div className="mt-4 flex flex-wrap items-center justify-center gap-3">
                   <LearningPathBadge type="dsa" label="DSA Focus" />
-                  <LearningPathBadge type="fullstack" label="Full-Stack Development" />
+                  <LearningPathBadge
+                    type="fullstack"
+                    label="Full-Stack Development"
+                  />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {semesters.map((semester) => (
-                  <SemesterCard 
-                    key={semester.semester} 
+                  <SemesterCard
+                    key={semester.semester}
                     data={semester}
-                    currentProgress={progressData.semesterProgress[semester.semester] || 0}
+                    currentProgress={semesterProgress[semester.semester] || 0}
                     onUpdateProgress={handleUpdateSemesterProgress}
                   />
                 ))}
@@ -306,12 +265,15 @@ export default function Home() {
                   Ready to Start Your Journey?
                 </h2>
                 <p className="mb-8 text-lg text-muted-foreground">
-                  Track your progress, build amazing projects, and achieve your placement goals
+                  Track your progress, build amazing projects, and achieve your
+                  placement goals
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <Button
                     size="lg"
-                    onClick={() => roadmapRef.current?.scrollIntoView({ behavior: "smooth" })}
+                    onClick={() =>
+                      roadmapRef.current?.scrollIntoView({ behavior: "smooth" })
+                    }
                     data-testid="button-view-roadmap"
                   >
                     View Full Roadmap
@@ -319,7 +281,11 @@ export default function Home() {
                   <Button
                     variant="outline"
                     size="lg"
-                    onClick={() => yearSelectorRef.current?.scrollIntoView({ behavior: "smooth" })}
+                    onClick={() =>
+                      yearSelectorRef.current?.scrollIntoView({
+                        behavior: "smooth",
+                      })
+                    }
                     data-testid="button-change-year"
                   >
                     Change Year
@@ -347,13 +313,16 @@ export default function Home() {
       <footer className="border-t border-border bg-muted/30 py-8">
         <div className="container mx-auto px-4 text-center text-sm text-muted-foreground">
           <p>
-            B.Tech Roadmap - Your complete guide to placement success through DSA and Full-Stack Development
+            B.Tech Roadmap - Your complete guide to placement success through
+            DSA and Full-Stack Development
           </p>
           <p className="mt-2">
-            LeetCode consistency • GitHub portfolio • LinkedIn networking • Hackathons & Internships
+            LeetCode consistency • GitHub portfolio • LinkedIn networking •
+            Hackathons & Internships
           </p>
         </div>
       </footer>
     </div>
   );
 }
+// ...existing code...
